@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require "pathname"
+require_relative "../lib/directory"
+Directory.new(Dir.pwd).rename_episodes
