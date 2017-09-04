@@ -6,7 +6,7 @@ class DownloadYoutubeAudio
   end
 
   def call
-    system(command)
+    Kernel.system(command)
   end
 
   def command
