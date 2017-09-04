@@ -1,6 +1,7 @@
+require "spec_helper"
 require_relative "../lib/episode"
 
-describe Episode do
+RSpec.describe Episode do
   describe "normalized_name" do
     it "lower-cases" do
       episode = described_class.new("Lol.mp4")
