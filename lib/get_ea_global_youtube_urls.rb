@@ -3,10 +3,11 @@ require "net/http"
 require "nokogiri"
 
 class GetEaGlobalYoutubeUrls
-  attr_reader :index_url
+  attr_reader :base_url, :page
 
-  def initialize(index_url = "https://www.eaglobal.org/talks/")
-    @index_url = index_url
+  def initialize(base_url: "https://www.eaglobal.org/talks/", page: 1)
+    @base_url = base_url
+    @page = page
   end
 
   def call
@@ -27,7 +28,11 @@ class GetEaGlobalYoutubeUrls
   end
 
   def index_page
-    @index_page ||= Nokogiri::HTML(Net::HTTP.get(URI(index_url)))
+    @index_page ||= Nokogiri::HTML(Net::HTTP.get(url))
+  end
+
+  def url
+    URI.join(base_url, "#{page}/")
   end
 
   class InternalPage
