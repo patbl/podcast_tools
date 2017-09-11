@@ -5,7 +5,7 @@ require "nokogiri"
 class GetEaGlobalYoutubeUrls
   attr_reader :index_url
 
-  def initialize(index_url)
+  def initialize(index_url = "https://www.eaglobal.org/talks/")
     @index_url = index_url
   end
 
