@@ -23,6 +23,11 @@ RSpec.describe Episode do
       expect(episode.normalized_name).to eq "alison-fahey-is-universal-basic.m4a"
     end
 
+    it "preserves unicode characters" do
+      episode = described_class.new("Global Challenges - Kristian Rönn.m4a")
+      expect(episode.normalized_name).to eq "global-challenges-kristian-rönn.m4a"
+    end
+
     it "doesn't strip hyphenated words that are part of the title" do
       episode = described_class.new("big-talk--mTN8Sal2Ug.opus")
       expect(episode.normalized_name).to eq "big-talk.opus"
