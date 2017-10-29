@@ -18,6 +18,11 @@ RSpec.describe Episode do
       expect(episode.normalized_name).to eq "talk.opus"
     end
 
+    it "doesn't strip hyphens used as dashes" do
+      episode = described_class.new("Alison Fahey - Is universal basic.m4a")
+      expect(episode.normalized_name).to eq "alison-fahey-is-universal-basic.m4a"
+    end
+
     it "doesn't strip hyphenated words that are part of the title" do
       episode = described_class.new("big-talk--mTN8Sal2Ug.opus")
       expect(episode.normalized_name).to eq "big-talk.opus"
