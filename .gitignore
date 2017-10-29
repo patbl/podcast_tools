@@ -2,3 +2,4 @@ spec/example_statuses.txt
 spec/fixtures/vcr_cassettes
 .byebug_history
 data
+data.bak
