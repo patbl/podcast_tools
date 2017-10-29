@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+require_relative "../lib/get_ea_global_youtube_urls"
+require_relative "../lib/download_youtube_audio"
+require_relative "../lib/bulk_download_youtube_audio"
+
+page = ARGV[0].to_i.nonzero? || 1
+urls = GetEaGlobalYoutubeUrls.new(page: page).call
+
+BulkDownloadYoutubeAudio.call(urls)
