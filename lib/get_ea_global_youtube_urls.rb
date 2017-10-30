@@ -17,7 +17,7 @@ class GetEaGlobalYoutubeUrls
   private
 
   def internal_child_pages
-    internal_child_paths.map { |path|
+    threads = internal_child_paths.map { |path|
       Thread.new { Net::HTTP.get(URI.join("https://www.eaglobal.org", path)) }
     }
     threads.map { |thread| InternalPage.new(thread.join.value) }
