@@ -8,7 +8,7 @@ RSpec.describe GetEaGlobalYoutubeUrls do
       it "returns an array of YouTube URLs" do
         VCR.use_cassette("ea_global_talks_index_and_children") do
           expect(described_class.new(base_url: "https://www.eaglobal.org/talks/", page: 1).call).
-            to include("https://www.youtube.com/watch?v=81JzQ55jIfQ", "https://www.youtube.com/watch?v=o8rVscSHJT4")
+            to include("https://www.youtube.com/watch?v=8s1RUDFM_Mk")
         end
       end
     end
