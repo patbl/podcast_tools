@@ -6,17 +6,7 @@ class Episode
   end
 
   def rename
-    new_name = normalized_name
-    puts name
-    puts new_name
-
-    while (input = gets.chomp) == "m"
-      new_name = self.class.new(new_name).normalized_name
-      puts name
-      puts new_name
-    end
-
-    FileUtils.mv(name, new_name) if input == "y"
+    FileUtils.mv(name, normalized_name)
   end
 
   def normalized_name
