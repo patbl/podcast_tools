@@ -2,7 +2,7 @@ require "spec_helper"
 require_relative "../lib/episode"
 
 RSpec.describe Episode do
-  describe "normalized_name" do
+  describe "#normalized_name" do
     it "lower-cases" do
       episode = described_class.new("Lol.mp4")
       expect(episode.normalized_name).to eq "lol.mp4"
@@ -41,6 +41,11 @@ RSpec.describe Episode do
     it "removes punctuation" do
       episode = described_class.new("altruism & the good life.mp4")
       expect(episode.normalized_name).to eq "altruism-the-good-life.mp4"
+    end
+
+    it "removes apostrophes without replacing them with anything" do
+      episode = described_class.new("Peter Singer's productivity tips.mp4")
+      expect(episode.normalized_name).to eq "peter-singers-productivity-tips.mp4"
     end
   end
 end

@@ -14,6 +14,7 @@ class Episode
     extension = File.extname(filename)
     basename = File.basename(filename, extension)
     basename = basename.sub(/-+[[:alnum:]]+$/, "") # Remove trailing alphanumeric slug
+    basename = basename.delete("'")
     basename = basename.gsub(/[^[:alpha:]\s]/, " ") # Replace punctuation and the like with spaces
     basename = basename.gsub(/[-\s]+/, " ")
     basename = basename.strip
