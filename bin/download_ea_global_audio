@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
 require_relative "../lib/get_ea_global_youtube_urls"
 require_relative "../lib/download_youtube_audio"
 require_relative "../lib/bulk_download_youtube_audio"

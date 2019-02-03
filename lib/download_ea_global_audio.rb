@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "./download_youtube_audio"
 require_relative "./get_ea_global_youtube_urls"
 

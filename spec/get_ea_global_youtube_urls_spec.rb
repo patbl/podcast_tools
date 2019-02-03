@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require "support/vcr_config"
 require_relative "../lib/get_ea_global_youtube_urls"

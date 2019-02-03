@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Episode
   attr_reader :name
 

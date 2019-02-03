@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DownloadYoutubeAudio
   attr_reader :url
 
