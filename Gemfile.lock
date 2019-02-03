@@ -1,14 +1,14 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.5.2)
+    addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
     byebug (10.0.2)
     coderay (1.1.2)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     diff-lcs (1.3)
-    hashdiff (0.3.7)
+    hashdiff (0.3.8)
     method_source (0.9.0)
     mini_portile2 (2.3.0)
     nokogiri (1.8.2)
@@ -19,7 +19,7 @@ GEM
     pry-byebug (3.6.0)
       byebug (~> 10.0)
       pry (~> 0.10)
-    public_suffix (3.0.2)
+    public_suffix (3.0.3)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -35,7 +35,7 @@ GEM
     rspec-support (3.7.1)
     safe_yaml (1.0.4)
     vcr (4.0.0)
-    webmock (3.3.0)
+    webmock (3.5.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
@@ -51,4 +51,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.15.4
+   1.17.2
