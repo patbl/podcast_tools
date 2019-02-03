@@ -10,6 +10,6 @@ class DownloadYoutubeAudio
   end
 
   def command
-    "youtube-dl -o #{'data/%(title)s.%(ext)s'.shellescape} -x #{url.shellescape}"
+    "youtube-dl -o #{"data/%(title)s.%(ext)s".shellescape} -x #{url.shellescape}"
   end
 end
