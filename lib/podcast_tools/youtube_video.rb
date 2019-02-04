@@ -12,7 +12,17 @@ module PodcastTools
     end
 
     def description
-      html.at_css("#eow-description").children.map(&:to_s).join("\n")
+      html.at_css("#eow-description").children.map { |child|
+        if child.name == "a"
+          href = CGI.parse(child.attributes["href"].value).fetch("q").fetch(0)
+          new_node = Nokogiri::XML::Node.new("a", html)
+          new_node.content = child.content
+          new_node["href"] = href
+          new_node
+        else
+          child
+        end
+      }.map(&:to_s).join("\n")
     end
 
     def title
