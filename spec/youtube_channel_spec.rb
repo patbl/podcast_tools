@@ -1,0 +1,33 @@
+# frozen_string_literal: true
+
+require "spec_helper"
+require "support/vcr_config"
+require_relative "../lib/youtube_channel"
+
+RSpec.describe YoutubeChannel do
+  let(:channel) {
+    described_class.new("https://www.youtube.com/channel/UCEfASxwPxzsHlG5Rf1-4K9w/videos")
+  }
+
+  describe "#urls" do
+    it "returns a list of YouTube video URLs" do
+      VCR.use_cassette("YouTube channel videos page") do
+        expect(channel.urls.length).to eq 30
+
+        aggregate_failures do
+          channel.urls.each do |url|
+            expect(url).to match(%r{/watch\?v=[^&]{5,}})
+          end
+        end
+      end
+    end
+  end
+
+  describe "#page" do
+    it "returns a bunch of HTML" do
+      VCR.use_cassette("YouTube channel videos page") do
+        expect(channel.page).to be_a(Nokogiri::HTML::Document)
+      end
+    end
+  end
+end
