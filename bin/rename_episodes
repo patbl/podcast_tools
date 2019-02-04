@@ -2,5 +2,5 @@
 # frozen_string_literal: true
 
 require "pathname"
-require_relative "../lib/directory"
+require_relative "../lib/podcast_tools/directory"
 Directory.new(Dir.pwd).rename_episodes
