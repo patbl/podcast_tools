@@ -31,7 +31,8 @@ module PodcastTools
       @videos ||= begin
         anchor_elements = Nokogiri::HTML(html).css("h3 a")
         anchor_elements.map { |element|
-          href = element[:href] or next
+          href = element[:href]
+          next unless href
           url = URI.join("https://www.youtube.com", href).to_s
           Video[url: url, title: element.content]
         }.compact
