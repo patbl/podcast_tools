@@ -9,25 +9,32 @@ module PodcastTools
 
     Video = Struct.new(:url, :title, keyword_init: true)
 
-    def initialize(channel_url)
-      @channel_url = channel_url
+    def initialize(channel_url: nil, html: nil)
+      if channel_url
+        @channel_url = channel_url
+      elsif html
+        @html = html
+      else
+        raise ArgumentError
+      end
     end
 
     def urls
       videos.map(&:url)
     end
 
-    def page
-      @page ||= Nokogiri::HTML(URI(channel_url).open.read)
+    def html
+      @html ||= URI(channel_url).open.read
     end
 
     def videos
       @videos ||= begin
-        anchor_elements = page.css(".yt-lockup-title a")
+        anchor_elements = Nokogiri::HTML(html).css("h3 a")
         anchor_elements.map { |element|
-          url = URI.join("https://www.youtube.com", element[:href]).to_s
+          href = element[:href] or next
+          url = URI.join("https://www.youtube.com", href).to_s
           Video[url: url, title: element.content]
-        }
+        }.compact
       end
     end
   end
