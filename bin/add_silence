@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+mkdir -p padded
+for file_name in "$@"; do
+  base_name=$(basename -- "$file_name")
+  extension="${base_name##*.}"
+  silence_file=silence.$extension
+  ffmpeg -filter_complex aevalsrc=0 -t 4 $silence_file
+  ffmpeg -i "concat:$file_name|$silence_file" -c copy padded/$file_name
+  rm $silence_file
+done
