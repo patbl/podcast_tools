@@ -3,4 +3,4 @@
 
 require "pathname"
 require_relative "../lib/podcast_tools/directory"
-Directory.new(Dir.pwd).rename_episodes
+PodcastTools::Directory.new(Dir.pwd).rename_episodes
