@@ -13,7 +13,7 @@ module PodcastTools
     end
 
     def command
-      "youtube-dl -o #{"data/%(title)s.%(ext)s".shellescape} -x #{url.shellescape}"
+      "youtube-dl -o #{"data/%(title)s.%(ext)s".shellescape} -x #{url.shellescape} --audio-format wav"
     end
   end
 end
