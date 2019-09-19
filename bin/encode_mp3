@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+mkdir -p mp3s
+for file_name in "$@"; do
+  base_name=${file_name%.*}
+  ffmpeg -i "$file_name" -codec:a libmp3lame -b:a 96k "mp3s/$base_name.mp3"
+done
