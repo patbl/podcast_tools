@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative "../podcast_tools"
 require "open-uri"
 require "google/apis/youtube_v3"
 
