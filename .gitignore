@@ -3,3 +3,4 @@ spec/fixtures/vcr_cassettes
 .byebug_history
 data
 data.bak
+config/secrets.yml

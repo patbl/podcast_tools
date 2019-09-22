@@ -7,4 +7,5 @@ require "podcast_tools/episode"
 require "podcast_tools/youtube_channel"
 
 module PodcastTools
+  CONFIG = YAML.safe_load(File.read("config/secrets.yml"), symbolize_names: true)
 end

@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "csv"
+$LOAD_PATH.prepend(File.expand_path(File.join(File.dirname(__FILE__), "../lib")))
+require "podcast_tools"
+
+channel_id = ARGV[0]
+limit = Integer(ARGV[1], exception: false)
+channel = PodcastTools::YoutubeChannel.new(channel_id, limit: limit)
+channel_name = channel.name
+urls = channel.urls
+FileUtils.mkdir_p("data")
+CSV.open("data/#{channel_name}.csv", "wb") do |csv|
+  channel.videos.each do |video|
+    csv << [video.url, video.title, video.description]
+  end
+end
+
+PodcastTools::BulkDownloadYoutubeAudio.call(urls)

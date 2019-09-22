@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "shellwords"
+
 module PodcastTools
   class DownloadYoutubeAudio
     attr_reader :url
