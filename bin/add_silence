@@ -5,7 +5,8 @@ for file_name in "$@"; do
   base_name=$(basename -- "$file_name")
   extension="${base_name##*.}"
   silence_file="silence.$extension"
-  ffmpeg -f lavfi -t 4 -i anullsrc "$silence_file"
+  sample_rate=$(sox --i "$file_name" | grep 'Sample Rate' | head -1 | ruby -ne 'puts $_[/\d+/]')
+  ffmpeg -f lavfi -t 4 -i anullsrc=channel_layout=stereo:sample_rate="$sample_rate" "$silence_file"
   sox "$file_name" "$silence_file" "padded/$file_name"
   rm "$silence_file"
 done
