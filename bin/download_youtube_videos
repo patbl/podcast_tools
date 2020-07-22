@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "csv"
+$LOAD_PATH.prepend(File.expand_path(File.join(File.dirname(__FILE__), "../lib")))
+require "podcast_tools"
+
+urls = ARGV
+PodcastTools::BulkDownloadYoutubeAudio.call(urls)
